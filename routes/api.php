@@ -14,6 +14,7 @@ Route::prefix('analytics')->group(function () {
     Route::get('profit-summary', [AnalyticsController::class, 'profitSummary']);
     Route::get('top-products', [AnalyticsController::class, 'topSellingProducts']);
     Route::get('country-comparison', [AnalyticsController::class, 'salesByCountry']);
+    Route::get('profit-by-segment', [AnalyticsController::class, 'profitBySegment']);
 });
 
 

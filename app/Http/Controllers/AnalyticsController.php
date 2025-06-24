@@ -56,4 +56,17 @@ class AnalyticsController extends Controller
 
         return response()->json($data);
     }
+
+    public function profitBySegment()
+{
+    $data = DB::table('fact_sales')
+        ->join('dim_segment', 'fact_sales.segment_id', '=', 'dim_segment.segment_id')
+        ->select('dim_segment.segment', DB::raw('SUM(fact_sales.profit) as total_profit'))
+        ->groupBy('dim_segment.segment')
+        ->orderByDesc('total_profit')
+        ->get();
+
+    return response()->json($data);
+}
+
 }
